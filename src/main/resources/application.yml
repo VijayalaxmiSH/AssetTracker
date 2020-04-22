@@ -1,0 +1,40 @@
+spring:
+  profiles:
+    active: true
+  application:
+    name: Prototype
+  pid:
+    file: build/prototype.pid
+  jmx:
+    enabled: false
+  datasource:
+    url: jdbc:mysql://${viji:localhost}:3306/RMS
+    username: viji
+    password: Viji@8642
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      connection:
+        driver_class: com.mysql.cj.jdbc.Driver
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+server:
+  port: 9000
+  context-path: /api
+  servlet:
+    context-path: /api
+logging:
+  logging:
+    config: classpath:logback.xml
+rateLimitBypass: false
+cors.allow:
+  origins: "*"
+  methods: "*"
