@@ -2,12 +2,10 @@ package com.lk.assettracker.controller;
 
 
 import com.lk.assettracker.model.AssetMaster;
+import com.lk.assettracker.query.AssetSpec;
 import com.lk.assettracker.services.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,18 +13,18 @@ import java.util.List;
 @RequestMapping("v1/asset")
 public class AssetController {
 
-   /* @Autowired
+    @Autowired
     private AssetService assetService;
 
     @PostMapping
-    void addAssetData(AssetMaster assetMaster) {
+    void addAssetData(@RequestBody AssetMaster assetMaster) {
         assetService.addAssetData(assetMaster);
     }
 
-    @PostMapping
-    List<AssetMaster> getAssetData() {
-        return assetService.getAssetData();
-    }*/
+    @GetMapping
+    List<AssetMaster> getAssetData(AssetSpec assetSpec) {
+     return assetService.getAssetData(assetSpec);
+    }
 
 
 }

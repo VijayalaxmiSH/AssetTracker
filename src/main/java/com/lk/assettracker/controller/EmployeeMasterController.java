@@ -3,13 +3,7 @@ package com.lk.assettracker.controller;
 import com.lk.assettracker.model.EmployeeMaster;
 import com.lk.assettracker.query.EmployeeSpec;
 import com.lk.assettracker.services.EmployeeMasterService;
-import net.kaczmarzyk.spring.data.jpa.domain.Equal;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.Or;
-import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

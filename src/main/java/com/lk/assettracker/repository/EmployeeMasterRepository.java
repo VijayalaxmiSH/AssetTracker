@@ -11,9 +11,5 @@ public interface EmployeeMasterRepository extends JpaRepository<EmployeeMaster, 
     @Query("SELECT em FROM EmployeeMaster em WHERE em.employeeId = :#{#employeeId}")
     EmployeeMaster findByEmployeeId(String employeeId);
 
-    @Query("SELECT em FROM EmployeeMaster em WHERE em.emailId = :#{#emailId}")
-    EmployeeMaster findByEmailId(String emailId);
 
-    @Query("SELECT em FROM EmployeeMaster em WHERE em.contactNumber = :#{#contactNumber}")
-    EmployeeMaster findByContactNumber(String contactNumber);
 }

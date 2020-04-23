@@ -13,7 +13,6 @@ public interface EmployeeMasterService {
 
     EmployeeMaster searchEmployeeById(String employeeId);
 
-
     List<EmployeeMaster> searchEmployee(Specification<EmployeeMaster> employeeSpec);
 
 }

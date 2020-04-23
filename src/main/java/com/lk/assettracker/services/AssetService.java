@@ -2,6 +2,7 @@ package com.lk.assettracker.services;
 
 import com.lk.assettracker.model.AssetMaster;
 import com.lk.assettracker.model.AssetTypeMaster;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,10 +10,9 @@ import java.util.List;
 
 public interface AssetService {
 
-    /*void addAssetData(AssetMaster assetMaster);
+    void addAssetData(AssetMaster assetMaster);
 
-    List<AssetMaster> getAssetData();
-*/
+    List<AssetMaster> getAssetData(Specification<AssetMaster> assetMasterSpecification);
 
 
 }
