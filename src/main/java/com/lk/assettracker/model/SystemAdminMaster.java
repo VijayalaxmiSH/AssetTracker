@@ -21,7 +21,6 @@ public class SystemAdminMaster {
             name = "S_GUID",
             unique = true
     )
-
     @NotNull
     private String id;
 
@@ -29,14 +28,12 @@ public class SystemAdminMaster {
             name = "S_EMPLOYEE_ID",
             unique = true
     )
-
     @NotNull
     private String employeeId;
 
     @Column(
             name = "CREATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date createdDate;
@@ -44,7 +41,6 @@ public class SystemAdminMaster {
     @Column(
             name = "UPDATED_DATE "
     )
-
     @NotNull
     @UpdateTimestamp
     private Date updatedDate;
@@ -52,7 +48,6 @@ public class SystemAdminMaster {
     @Column(
             name = "IS_ACTIVE"
     )
-
     @NotNull
     private boolean isActive;
 

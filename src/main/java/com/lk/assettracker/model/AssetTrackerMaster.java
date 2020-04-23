@@ -20,28 +20,24 @@ public class AssetTrackerMaster {
             name = "ATM_GUID",
             unique = true
     )
-
     @NotNull
     private String id;
 
     @Column(
             name = "AMT_EMPLOYEE_ID"
     )
-
     @NotNull
     private String employeeId;
 
     @Column(
             name = "AMT_ASSET_ID "
     )
-
     @NotNull
     private String assetId;
 
     @Column(
             name = "AMT_ISSUE_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date issueDate;
@@ -49,7 +45,6 @@ public class AssetTrackerMaster {
     @Column(
             name = "AMT_RETURN_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date returnDate;
@@ -57,13 +52,11 @@ public class AssetTrackerMaster {
     @Column(
             name = "AM_REMARKS"
     )
-
     private String remarks;
 
     @Column(
             name = "CREATED_DATE "
     )
-
     @NotNull
     @CreationTimestamp
     private Date createdDate;
@@ -71,7 +64,6 @@ public class AssetTrackerMaster {
     @Column(
             name = "UPDATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date updateDate;

@@ -1,8 +1,15 @@
 package com.lk.assettracker.controller;
 
 import com.lk.assettracker.model.EmployeeMaster;
+import com.lk.assettracker.query.EmployeeSpec;
 import com.lk.assettracker.services.EmployeeMasterService;
+import net.kaczmarzyk.spring.data.jpa.domain.Equal;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Or;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,21 +22,14 @@ public class EmployeeMasterController {
     EmployeeMasterService employeeMasterService;
 
 
-    @PostMapping("/register")
+    @PostMapping
     void registerEmployee(@RequestBody EmployeeMaster employeeMaster) {
         employeeMasterService.registerEmployee(employeeMaster);
     }
 
     @GetMapping
-    List<EmployeeMaster> getEmployees() {
-        return employeeMasterService.getEmployees();
-    }
-
-    @GetMapping("/search")
-    EmployeeMaster searchEmployee(@RequestParam(value = "employeeId", required = false) String employeeId ,
-                                  @RequestParam(value = "emailId", required = false) String emailId,
-                                  @RequestParam(value = "contactNumber", required = false) String contactNumber){
-        return employeeMasterService.searchEmployee(employeeId,emailId,contactNumber);
+    List<EmployeeMaster> getEmployees(EmployeeSpec employeeSpec) {
+        return employeeMasterService.searchEmployee(employeeSpec);
     }
 
 }

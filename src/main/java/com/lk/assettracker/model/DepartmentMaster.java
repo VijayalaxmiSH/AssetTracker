@@ -28,14 +28,12 @@ public class DepartmentMaster {
     @Column(
             name = "D_NAME"
     )
-
     @NotNull
     private String departmentName;
 
     @Column(
             name = "CREATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date createdDate;
@@ -43,7 +41,6 @@ public class DepartmentMaster {
     @Column(
             name = "UPDATED_DATE"
     )
-
     @NotNull
     @UpdateTimestamp
     private Date updatedDate;
@@ -51,7 +48,6 @@ public class DepartmentMaster {
     @Column(
             name = "IS_DELETED"
     )
-
     @NotNull
     private boolean isDeleted;
 

@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Entity
 @Table(
-        name = "BRANCH_MASTER\n"
+        name = "BRANCH_MASTER"
 )
 
 public class BranchMaster {
@@ -22,21 +22,18 @@ public class BranchMaster {
             name = "B_GUID",
             unique = true
     )
-
     @NotNull
     private String id;
 
     @Column(
             name = "B_NAME"
     )
-
     @NotNull
     private String branchName;
 
     @Column(
             name = "CREATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date createdDate;
@@ -44,7 +41,6 @@ public class BranchMaster {
     @Column(
             name = "UPDATED_DATE"
     )
-
     @NotNull
     @UpdateTimestamp
     private Date updatedDate;
@@ -52,7 +48,6 @@ public class BranchMaster {
     @Column(
             name = "IS_DELETED"
     )
-
     @NotNull
     private boolean isDeleted;
 

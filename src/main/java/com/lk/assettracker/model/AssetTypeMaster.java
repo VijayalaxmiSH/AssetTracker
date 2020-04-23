@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Entity
 @Table(
-        name = "ASSET_TYPE_MASTER\n"
+        name = "ASSET_TYPE_MASTER"
 )
 public class AssetTypeMaster {
 
@@ -28,14 +28,12 @@ public class AssetTypeMaster {
     @Column(
             name = "AT_NAME"
     )
-
     @NotNull
     private String name;
 
     @Column(
             name = "CREATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date createdDate;
@@ -43,7 +41,6 @@ public class AssetTypeMaster {
     @Column(
             name = "UPDATED_DATE"
     )
-
     @NotNull
     @UpdateTimestamp
     private Date updatedDate;
@@ -51,7 +48,6 @@ public class AssetTypeMaster {
     @Column(
             name = "IS_DELETED"
     )
-
     @NotNull
     private boolean isDeleted;
 

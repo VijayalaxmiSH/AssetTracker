@@ -21,47 +21,40 @@ public class AssetMaster {
             name = "AM_GUID",
             unique = true
     )
-
     @NotNull
     private String id;
 
     @Column(
             name = "AM_ASSET_TYPE"
     )
-
     @NotNull
     private String assetType;
 
     @Column(
             name = "AM_BRANCH"
     )
-
     @NotNull
     private String branch;
 
     @Column(
             name = "AM_DEPARTMENT"
     )
-
     @NotNull
     private String department;
 
     @Column(
             name = "AM_VENDOR"
     )
-
     private String vendor;
 
     @Column(
             name = "AM_INVOICE_NUMBER"
     )
-
     private String invoiceNumber;
 
     @Column(
             name = "AM_INVOICE_DATE"
     )
-
     @NotNull
     @CreationTimestamp
     private Date invoiceDate;
@@ -69,13 +62,11 @@ public class AssetMaster {
     @Column(
             name = "AM_BILLING_COMPANY_NAME"
     )
-
     private String billingCompanyName;
 
     @Column(
             name = "AM_SERIAL_NUMBER"
     )
-
     private String serialNumber;
 
     @Column(
@@ -87,14 +78,12 @@ public class AssetMaster {
     @Column(
             name = "AM_CREATED_BY"
     )
-
     @NotNull
     private String createBy;
 
     @Column(
             name = "AM_SPECIFICATION"
     )
-
     private String specification;
 
     @Column(
@@ -106,32 +95,26 @@ public class AssetMaster {
     @Column(
             name = "AM_REMARKS"
     )
-
     private String remarks;
 
-    @NotNull
-    private String departmentName;
 
     @Column(
             name = "CREATED_DATE"
     )
-
     @NotNull
     @CreationTimestamp
-    private java.sql.Date createdDate;
+    private Date createdDate;
 
     @Column(
             name = "UPDATED_DATE"
     )
-
     @NotNull
     @UpdateTimestamp
-    private java.sql.Date updatedDate;
+    private Date updatedDate;
 
     @Column(
             name = "IS_DELETED"
     )
-
     @NotNull
     private boolean isDeleted;
 
@@ -247,27 +230,19 @@ public class AssetMaster {
         this.remarks = remarks;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public java.sql.Date getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(java.sql.Date createdDate) {
+    public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
 
-    public java.sql.Date getUpdatedDate() {
+    public Date getUpdatedDate() {
         return updatedDate;
     }
 
-    public void setUpdatedDate(java.sql.Date updatedDate) {
+    public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
     }
 

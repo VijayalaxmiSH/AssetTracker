@@ -1,5 +1,7 @@
 package com.lk.assettracker.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,6 +25,7 @@ public class EmployeeMaster {
             unique = true
     )
     @NotNull
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     private String id;
 
     @Column(
@@ -55,6 +58,7 @@ public class EmployeeMaster {
     )
     @NotNull
     @CreationTimestamp
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     private Date createdDate;
 
     @Column(
@@ -62,8 +66,10 @@ public class EmployeeMaster {
     )
     @NotNull
     @UpdateTimestamp
+    @JsonProperty(access =  JsonProperty.Access.READ_ONLY)
     private Date updatedDate;
 
+    @JsonIgnore
     @Column(
             name = "IS_ACTIVE"
     )

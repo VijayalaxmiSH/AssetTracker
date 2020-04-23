@@ -27,7 +27,7 @@ public class SystemAdminImpl implements SystemAdminService {
         if (Objects.nonNull(request)) {
             if (Strings.isNullOrEmpty(request.getEmployeeId())) {
                 //TODO: need to handle exception
-            } else if (Objects.isNull(employeeMasterService.searchEmployee(request.getEmployeeId(), null, null))) {
+            } else if (Objects.isNull(employeeMasterService.searchEmployeeById(request.getEmployeeId()))) {
                 //TODO: need to handle exception
             } else {
                 request.setId(UUID.randomUUID().toString());
