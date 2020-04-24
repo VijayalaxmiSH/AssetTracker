@@ -70,7 +70,9 @@ public class AssetMaster {
     private String serialNumber;
 
     @Column(
-            name = "AM_ASSET_TAG_NUMBER"
+            name = "AM_ASSET_TAG_NUMBER",
+            unique = true
+
     )
     @NotNull
     private String assetTagNumber;

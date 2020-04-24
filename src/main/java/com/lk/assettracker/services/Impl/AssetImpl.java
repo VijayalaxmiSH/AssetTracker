@@ -1,6 +1,8 @@
 package com.lk.assettracker.services.Impl;
 
 
+import com.google.common.base.Strings;
+import com.lk.assettracker.enums.AssetStatus;
 import com.lk.assettracker.model.AssetMaster;
 import com.lk.assettracker.repository.AssetRepository;
 import com.lk.assettracker.services.AssetService;
@@ -37,4 +39,23 @@ public class AssetImpl implements AssetService {
         return assetRepository.findAll(assetMasterSpecification);
     }
 
+    @Override
+    public AssetMaster searchEAssetById(String assetTagNumber) {
+        if (!Strings.isNullOrEmpty(assetTagNumber)) {
+            return assetRepository.findByAssetId(assetTagNumber);
+        } else return null; //TODO need to handle exception
+    }
+
+    @Override
+    public AssetMaster findActiveAssetById(String assetTagNumber) {
+        if (!Strings.isNullOrEmpty(assetTagNumber)) {
+            AssetMaster assetMaster = assetRepository.findByAssetId(assetTagNumber);
+            if (Objects.nonNull(assetMaster) && assetMaster.getStatus() == AssetStatus.WORKING) return assetMaster;
+            else return null;
+        } else return null; //TODO need to handle exception
+    }
 }
+
+
+
+

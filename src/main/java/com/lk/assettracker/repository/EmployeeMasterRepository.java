@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface EmployeeMasterRepository extends JpaRepository<EmployeeMaster, String>, JpaSpecificationExecutor<EmployeeMaster> {
 
 
-    @Query("SELECT em FROM EmployeeMaster em WHERE em.employeeId = :#{#employeeId}")
+    @Query("SELECT em FROM EmployeeMaster em WHERE em.employeeId = :#{#employeeId} AND em.isActive = true")
     EmployeeMaster findByEmployeeId(String employeeId);
 
 
