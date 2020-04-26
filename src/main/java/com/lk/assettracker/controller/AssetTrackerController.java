@@ -29,8 +29,8 @@ public class AssetTrackerController {
         return assetTrackerService.getAssetHistory(assetId);
     }
 
-    @GetMapping("/asset/{currentAssetId}")
+    /*@GetMapping("/asset/{currentAssetId}")
     List<AssetTrackerMaster> getCurrentAssigneeDetails(@PathVariable("currentAssetId") String assetId){
         return assetTrackerService.getCurrentAssignee(assetId);
-    }
+    }*/
 }
