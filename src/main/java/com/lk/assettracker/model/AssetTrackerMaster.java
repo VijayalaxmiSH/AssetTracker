@@ -1,6 +1,8 @@
 package com.lk.assettracker.model;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,14 +41,12 @@ public class AssetTrackerMaster {
             name = "AMT_ISSUE_DATE"
     )
     @NotNull
-    @CreationTimestamp
     private Date issueDate;
 
     @Column(
             name = "AMT_RETURN_DATE"
     )
-    @NotNull
-    @CreationTimestamp
+    @Nullable
     private Date returnDate;
 
     @Column(
@@ -65,7 +65,7 @@ public class AssetTrackerMaster {
             name = "UPDATED_DATE"
     )
     @NotNull
-    @CreationTimestamp
+    @UpdateTimestamp
     private Date updateDate;
 
     public String getId() {

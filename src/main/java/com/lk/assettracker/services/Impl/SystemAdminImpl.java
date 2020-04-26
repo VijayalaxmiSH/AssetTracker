@@ -1,6 +1,7 @@
 package com.lk.assettracker.services.Impl;
 
 import com.google.common.base.Strings;
+import com.lk.assettracker.model.EmployeeMaster;
 import com.lk.assettracker.model.SystemAdminMaster;
 import com.lk.assettracker.repository.SystemAdminRepository;
 import com.lk.assettracker.services.EmployeeMasterService;
@@ -27,14 +28,18 @@ public class SystemAdminImpl implements SystemAdminService {
         if (Objects.nonNull(request)) {
             if (Strings.isNullOrEmpty(request.getEmployeeId())) {
                 //TODO: need to handle exception
-            } else if (Objects.isNull(employeeMasterService.searchEmployeeById(request.getEmployeeId()))) {
-                //TODO: need to handle exception
             } else {
-                request.setId(UUID.randomUUID().toString());
-                request.setCreatedDate(Calendar.getInstance().getTime());
-                request.setUpdatedDate(Calendar.getInstance().getTime());
-                request.setActive(true);
-                systemAdminRepository.save(request);
+                EmployeeMaster employee = employeeMasterService.searchEmployeeById(request.getEmployeeId());
+                if (Objects.isNull(employee)) {
+                    //TODO: need to handle exception
+                } else {
+                    request.setId(UUID.randomUUID().toString());
+                    request.setEmployeeId(employee.getId());
+                    request.setCreatedDate(Calendar.getInstance().getTime());
+                    request.setUpdatedDate(Calendar.getInstance().getTime());
+                    request.setActive(true);
+                    systemAdminRepository.save(request);
+                }
             }
         }
         //TODO: Throw bad request exception
