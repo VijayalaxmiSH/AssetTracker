@@ -1,6 +1,7 @@
 package com.lk.assettracker.controller;
 
 import com.lk.assettracker.model.AssetTrackerMaster;
+import com.lk.assettracker.model.AssetTrackerResponse;
 import com.lk.assettracker.services.AssetTrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,12 @@ public class AssetTrackerController {
     }
 
     @GetMapping("/asset/{assetId}")
-    List<AssetTrackerMaster> getAssetHistory(@PathVariable("assetId") String assetId){
+    List<AssetTrackerResponse> getAssetHistory(@PathVariable("assetId") String assetId){
         return assetTrackerService.getAssetHistory(assetId);
     }
 
-    /*@GetMapping("/asset/{currentAssetId}")
-    List<AssetTrackerMaster> getCurrentAssigneeDetails(@PathVariable("currentAssetId") String assetId){
+    @GetMapping("/asset/{currentAssetId}")
+    AssetTrackerResponse getCurrentAssigneeDetails(@PathVariable("currentAssetId") String assetId){
         return assetTrackerService.getCurrentAssignee(assetId);
-    }*/
+    }
 }

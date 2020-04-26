@@ -2,6 +2,7 @@ package com.lk.assettracker.services.Impl;
 
 import com.lk.assettracker.model.AssetMaster;
 import com.lk.assettracker.model.AssetTrackerMaster;
+import com.lk.assettracker.model.AssetTrackerResponse;
 import com.lk.assettracker.model.EmployeeMaster;
 import com.lk.assettracker.repository.AssetTrackerRepository;
 import com.lk.assettracker.services.AssetService;
@@ -10,10 +11,7 @@ import com.lk.assettracker.services.EmployeeMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class AssetTrackerImpl implements AssetTrackerService {
@@ -58,16 +56,43 @@ public class AssetTrackerImpl implements AssetTrackerService {
     }
 
     @Override
-    public List<AssetTrackerMaster> getAssetHistory(String assetTag) {
+    public List<AssetTrackerResponse> getAssetHistory(String assetTag) {
+        List<AssetTrackerResponse> assetTrackerResponses = new ArrayList<>();
         AssetMaster asset = assetService.findActiveAssetById(assetTag);
         if (Objects.nonNull(asset)) {
-            return assetTrackerRepository.findByAssetTag(asset.getId());
+            List<AssetTrackerMaster> assetTrackerMasters = assetTrackerRepository.findByAssetTag(asset.getId());
+            if (Objects.isNull(assetTrackerMasters)) return null;
+            for (AssetTrackerMaster assetTrackerMaster : assetTrackerMasters) {
+                if (Objects.isNull(assetTrackerMaster.getEmployeeId())) return null;
+                EmployeeMaster employeeMaster = employeeMasterService.searchEmployeeByGUIId(assetTrackerMaster.getId());
+                assetTrackerResponses.add(getDetails(assetTrackerMaster, asset, employeeMaster));
+            }
+            return assetTrackerResponses;
         } else return null;
     }
 
     @Override
-    public EmployeeMaster getCurrentAssignee(String assetId) {
-        return null;
+    public AssetTrackerResponse getCurrentAssignee(String assetId) {
+        AssetMaster asset = assetService.findActiveAssetById(assetId);
+        if (Objects.isNull(asset)) return null;
+        AssetTrackerMaster assetTrackerResponse = assetTrackerRepository.findCurrentAssigneeByAssetTag(asset.getId());
+        if (Objects.isNull(assetTrackerResponse)) return null;
+        EmployeeMaster employeeMaster = employeeMasterService.searchEmployeeByGUIId(assetTrackerResponse.getEmployeeId());
+        if (Objects.isNull(employeeMaster)) return null;
+        return getDetails(assetTrackerResponse, asset, employeeMaster);
+    }
+
+    private AssetTrackerResponse getDetails(AssetTrackerMaster trackerMaster, AssetMaster asset, EmployeeMaster employeeMaster) {
+        AssetTrackerResponse assetTrackerResponse = new AssetTrackerResponse();
+        assetTrackerResponse.setAssetId(asset.getAssetTagNumber());
+        assetTrackerResponse.setAssetName(asset.getName());
+        assetTrackerResponse.setEmployeeId(employeeMaster.getEmployeeId());
+        assetTrackerResponse.setAssetType(asset.getAssetType());
+        assetTrackerResponse.setIssueDate(trackerMaster.getIssueDate());
+        assetTrackerResponse.setReturnDate(trackerMaster.getReturnDate());
+        assetTrackerResponse.setRemarks(asset.getRemarks());
+        assetTrackerResponse.setStatus(asset.getStatus());
+        return assetTrackerResponse;
     }
 
 

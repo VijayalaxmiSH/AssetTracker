@@ -37,6 +37,12 @@ public class AssetMaster {
     private String branch;
 
     @Column(
+            name = "AM_NAME "
+    )
+    private String name;
+
+
+    @Column(
             name = "AM_DEPARTMENT"
     )
     @NotNull
@@ -254,5 +260,13 @@ public class AssetMaster {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

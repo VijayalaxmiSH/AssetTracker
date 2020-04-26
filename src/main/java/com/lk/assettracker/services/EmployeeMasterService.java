@@ -11,6 +11,8 @@ public interface EmployeeMasterService {
 
     EmployeeMaster searchEmployeeById(String employeeId);
 
+    EmployeeMaster searchEmployeeByGUIId(String guiId);
+
     List<EmployeeMaster> searchEmployee(Specification<EmployeeMaster> employeeSpec);
 
 }

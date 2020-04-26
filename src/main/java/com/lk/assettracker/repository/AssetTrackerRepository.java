@@ -16,4 +16,10 @@ public interface AssetTrackerRepository extends JpaRepository<AssetTrackerMaster
 
     @Query("SELECT a FROM AssetTrackerMaster a WHERE a.assetId = :#{#assetId}")
     List<AssetTrackerMaster> findByAssetTag(String assetId);
+
+    @Query("SELECT a FROM AssetTrackerMaster a WHERE a.assetId = :#{#assetId} AND a.returnDate IS NULL")
+    AssetTrackerMaster findCurrentAssigneeByAssetTag(String assetId);
+
+    @Query("SELECT a FROM AssetTrackerMaster a WHERE a.employeeId = :#{#employeeId} AND a.returnDate IS NULL")
+    AssetTrackerMaster findCurrentAssigneeByEmployeeId(String employeeId);
 }

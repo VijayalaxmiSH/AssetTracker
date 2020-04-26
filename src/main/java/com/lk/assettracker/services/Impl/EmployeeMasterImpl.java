@@ -38,6 +38,11 @@ public class EmployeeMasterImpl implements EmployeeMasterService {
         }else return null; //TODO need to handle exception
     }
 
+    @Override
+    public EmployeeMaster searchEmployeeByGUIId(String guiId) {
+        return employeeMasterRepository.findByEmployeeGuiId(guiId);
+    }
+
 
     @Override
     public List<EmployeeMaster> searchEmployee(Specification<EmployeeMaster> employeeSpec) {
