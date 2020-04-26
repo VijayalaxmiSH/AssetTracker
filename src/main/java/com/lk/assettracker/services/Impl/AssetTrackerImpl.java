@@ -28,7 +28,7 @@ public class AssetTrackerImpl implements AssetTrackerService {
     private AssetService assetService;
 
     @Override
-    public void entryToAssetTracker(AssetTrackerMaster assetTrackerMaster) {
+    public void assignAsset(AssetTrackerMaster assetTrackerMaster) {
         if (Objects.nonNull(assetTrackerMaster)) {
             EmployeeMaster employee = employeeMasterService.searchEmployeeById(assetTrackerMaster.getEmployeeId());
             AssetMaster asset = assetService.findActiveAssetById(assetTrackerMaster.getAssetId());
@@ -52,8 +52,21 @@ public class AssetTrackerImpl implements AssetTrackerService {
     public List<AssetTrackerMaster> getEmployeeAssetDetails(String employeeId) {
         EmployeeMaster employee = employeeMasterService.searchEmployeeById(employeeId);
         if (Objects.nonNull(employee)) {
-            return assetTrackerRepository.findAssetByEmployeeId(employee.getId());
+            return assetTrackerRepository.findAssetByEmpId(employee.getId());
         }
+        return null;
+    }
+
+    @Override
+    public List<AssetTrackerMaster> getAssetHistory(String assetTag) {
+        AssetMaster asset = assetService.findActiveAssetById(assetTag);
+        if (Objects.nonNull(asset)) {
+            return assetTrackerRepository.findByAssetTag(asset.getId());
+        } else return null;
+    }
+
+    @Override
+    public EmployeeMaster getCurrentAssignee(String assetId) {
         return null;
     }
 

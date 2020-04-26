@@ -11,6 +11,9 @@ import java.util.List;
 
 public interface AssetTrackerRepository extends JpaRepository<AssetTrackerMaster,String> {
 
-    @Query("SELECT em FROM AssetTrackerMaster em WHERE em.employeeId = :#{#employeeId}")
-    List<AssetTrackerMaster> findAssetByEmployeeId(String employeeId);
+    @Query("SELECT a FROM AssetTrackerMaster a WHERE a.employeeId = :#{#employeeId}")
+    List<AssetTrackerMaster> findAssetByEmpId(String employeeId);
+
+    @Query("SELECT a FROM AssetTrackerMaster a WHERE a.assetId = :#{#assetId}")
+    List<AssetTrackerMaster> findByAssetTag(String assetId);
 }

@@ -16,12 +16,21 @@ public class AssetTrackerController {
 
     @PostMapping
     void addAssetDetails(@RequestBody AssetTrackerMaster assetTrackerMaster){
-        assetTrackerService.entryToAssetTracker(assetTrackerMaster);
+        assetTrackerService.assignAsset(assetTrackerMaster);
     }
 
-    @GetMapping
+    @GetMapping("/employee")
     List<AssetTrackerMaster> getEmployeeAssetDetails(String employeeId){
        return assetTrackerService.getEmployeeAssetDetails(employeeId);
     }
 
+    @GetMapping("/asset/{assetId}")
+    List<AssetTrackerMaster> getAssetHistory(@PathVariable("assetId") String assetId){
+        return assetTrackerService.getAssetHistory(assetId);
+    }
+
+    @GetMapping("/asset/{currentAssetId}")
+    List<AssetTrackerMaster> getCurrentAssigneeDetails(@PathVariable("currentAssetId") String assetId){
+        return assetTrackerService.getCurrentAssignee(assetId);
+    }
 }
