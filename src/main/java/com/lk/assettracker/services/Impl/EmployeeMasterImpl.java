@@ -1,6 +1,7 @@
 package com.lk.assettracker.services.Impl;
 
 import com.google.common.base.Strings;
+import com.lk.assettracker.exception.BadRequestRequestException;
 import com.lk.assettracker.model.EmployeeMaster;
 import com.lk.assettracker.repository.EmployeeMasterRepository;
 import com.lk.assettracker.services.EmployeeMasterService;
@@ -27,15 +28,14 @@ public class EmployeeMasterImpl implements EmployeeMasterService {
             employeeMaster.setUpdatedDate(Calendar.getInstance().getTime());
             employeeMaster.setActive(true);
             employeeMasterRepository.save(employeeMaster);
-        }
-        //TODO: Throw bad request exception
+        } else throw new BadRequestRequestException("Request body should not be a null");
     }
 
     @Override
     public EmployeeMaster searchEmployeeById(String employeeId) {
-        if (!Strings.isNullOrEmpty(employeeId)){
+        if (!Strings.isNullOrEmpty(employeeId)) {
             return employeeMasterRepository.findByEmployeeId(employeeId);
-        }else return null; //TODO need to handle exception
+        } else throw new BadRequestRequestException("Employee Id should not be a null or empty");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.lk.assettracker.services.Impl;
 
+import com.lk.assettracker.exception.BadRequestRequestException;
 import com.lk.assettracker.model.AssetTypeMaster;
 import com.lk.assettracker.repository.AssetTypeRepository;
 import com.lk.assettracker.services.AssetTypeService;
@@ -26,7 +27,7 @@ public class AssetTypeImpl implements AssetTypeService {
             assetTypeMaster.setDeleted(true);
             assetTypeRepository.save(assetTypeMaster);
         }
-//TODO: need to handle exception
+        throw new BadRequestRequestException("dgdfgff");
     }
 
     @Override
